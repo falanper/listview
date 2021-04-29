@@ -9,7 +9,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
-class CustomAdapter(var arrayList: ArrayList<Data>) : BaseAdapter() {
+class MyAdapter(var arrayList: ArrayList<Data>) : BaseAdapter() {
 
     override fun getCount() = arrayList.size
 
@@ -37,7 +37,7 @@ class CustomAdapter(var arrayList: ArrayList<Data>) : BaseAdapter() {
         val audioImageView = rowView?.findViewById<ImageView>(R.id.audio_image_view)
         audioImageView?.setOnClickListener {
 
-            if (mediaPlayer == null)
+            if (mediaPlayer == null) {
                 mediaPlayer = MediaPlayer.create(
                     context, context.resources.getIdentifier(
                         item.audioFileName,
@@ -45,9 +45,9 @@ class CustomAdapter(var arrayList: ArrayList<Data>) : BaseAdapter() {
                         context.packageName
                     )
                 )
+            }
             mediaPlayer?.start()
         }
-
         return rowView!!
     }
 }

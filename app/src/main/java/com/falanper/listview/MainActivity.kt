@@ -2,40 +2,17 @@ package com.falanper.listview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.ListView
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var listView: ListView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val listView = findViewById<ListView>(R.id.list_view)
-
-        val array: Array<String> = arrayOf(
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9",
-                "10",
-                "11",
-                "12",
-                "13",
-                "14",
-                "15",
-                "16",
-                "17",
-                "18",
-                "19",
-                "20"
-        )
-//        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array)
-//        listView.adapter = adapter
+        listView = findViewById(R.id.list_view)
 
         val arrayList: ArrayList<Data> = ArrayList()
 
@@ -51,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         arrayList.add(Data("9", "audio_9"))
         arrayList.add(Data("10", "audio_10"))
 
-        val customAdapter : CustomAdapter = CustomAdapter(arrayList)
+        val customAdapter = MyAdapter(arrayList)
         listView.adapter = customAdapter
     }
 }
